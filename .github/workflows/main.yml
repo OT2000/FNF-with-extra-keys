@@ -49,6 +49,12 @@ lime rebuild extension-webm <macos>
         run: echo "${{github.run_id}}" > VERSION
       - name: Compile
         run: haxelib run lime build mac --app-version="4.0.0-${{ github.run_id}}"
+
+        on:
+  push:
+    branches:
+    - main
+    - release/*
       - name: Publish Artifact
         uses: actions/upload-artifact@main
         with:
